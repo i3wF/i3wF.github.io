@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/77888909?v=4" type="image/x-icon" /> 
+    <title>Fucked By 3wF</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="content">
+                <img src="https://avatars.githubusercontent.com/u/77888909?v=4" alt="photo-2023-08-07-08-52-52" alt="Image" class="center-image">
+                <div class="flex">
+                    <h1 class="header-sub-title" id="word"></h1><p class="header-sub-title blink">|</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="https://instagram.com/b7z0" class="button">Click Me</a>
+    </div>
+
+    <audio id="myAudio">
+        <source src="https://i.top4top.io/m_2778b6fvv0.mp3" type="audio/mpeg">
+        <iframe src="https://i.top4top.io/m_2778b6fvv0.mp3" allow="autoplay"></iframe>
+    </audio>
+
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Roboto';
+        html, body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #fff;
+            background-color: black;
+        }
+
+        .header {
+            padding-top: 30px;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .center-image {
+            height: auto;
+            max-width: 50%;
+            max-height: 50%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h2, a, p {
+            color: #fff;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+
+        p > a {
+            color: #fd084a;
+        }
+
+        .blink {
+            animation: blink 0.5s infinite;
+        }
+
+        @keyframes blink {
+            to { opacity: .0; }   
+        }
+
+        .flex {
+            display: flex;
+            padding-left: 590px;
+        }
+
+        .header-sub-title {
+            color: #fff;
+            font-family: "Courier";
+            font-size: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #493339;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #141414;
+        }
+
+        @media screen and (max-width: 1020px) {
+            .header-sub-title {
+                color: #fff;
+                font-family: "Courier";
+                font-size: 15px;
+            }
+            .flex {
+                display: flex;
+                padding-left: 400px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header-sub-title {
+                color: #fff;
+                font-family: "Courier";
+                font-size: 15px;
+            }
+            .flex {
+                display: flex;
+                padding-left: 300px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .header-sub-title {
+                color: #fff;
+                font-family: "Courier";
+                font-size: 5px;
+            }
+            .flex {
+                display: flex;
+                padding-left: 150px;
+            }
+        }
+
+    </style>
+    <script>
+        const words = ["No One Is Safe From Evil", "Fucked By 3wF", "3wF Was Here"];
+        let i = 0;
+        let timer;
+
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('word').innerHTML += word.shift();
+                } else {
+                    deletingEffect();
+                    return false;
+                };
+                timer = setTimeout(loopTyping, 250);
+            };
+            loopTyping();
+        };
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('word').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    };
+                    typingEffect();
+                    return false;
+                };
+                timer = setTimeout(loopDeleting, 200);
+            };
+            loopDeleting();
+        };
+
+        typingEffect();
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+        });
+    </script>
+</body>
+</html>
