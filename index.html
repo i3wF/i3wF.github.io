@@ -3,144 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/77888909?v=4" type="image/x-icon" /> 
-    <title>Fucked By 3wF</title>
-</head>
-<body>
-    <div class="header">
-        <div class="container">
-            <div class="content">
-                <img src="https://avatars.githubusercontent.com/u/77888909?v=4" alt="photo-2023-08-07-08-52-52" alt="Image" class="center-image">
-                <div class="flex">
-                    <h1 class="header-sub-title" id="word"></h1><p class="header-sub-title blink">|</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="button-container">
-        <a href="https://instagram.com/b7z0" class="button">Click Me</a>
-    </div>
-
-    <audio id="myAudio">
-        <source src="https://i.top4top.io/m_2778b6fvv0.mp3" type="audio/mpeg">
-        <iframe src="https://i.top4top.io/m_2778b6fvv0.mp3" allow="autoplay"></iframe>
-    </audio>
-
+    <title>Typing Effect Website</title>
     <style>
-        @import 'https://fonts.googleapis.com/css?family=Roboto';
-        html, body {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
-            color: #fff;
-            background-color: black;
+            background-color: #000000;
+            color: #333333;
         }
-
-        .header {
-            padding-top: 30px;
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .center-image {
-            height: auto;
-            max-width: 50%;
-            max-height: 50%;
+        #overlay {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
         }
-
-        h2, a, p {
-            color: #fff;
-            font-family: sans-serif;
-            text-decoration: none;
+        #header {
+            text-align: center;
+            padding: 20px;
         }
-
-        p > a {
-            color: #fd084a;
+        #word-container {
+            text-align: center;
+            padding: 20px;
+            font-family: Futura, sans-serif;
+            color: #ffffff;
+            height: 40px;
         }
-
-        .blink {
-            animation: blink 0.5s infinite;
+        #word {
+            font-family: Futura, sans-serif;
         }
-
-        @keyframes blink {
-            to { opacity: .0; }   
+        .center-image {
+            width: 200px;
+            height: auto;
         }
-
-        .flex {
-            display: flex;
-            padding-left: 590px;
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
         }
-
-        .header-sub-title {
-            color: #fff;
-            font-family: "Courier";
-            font-size: 20px;
-        }
-
         .button {
             padding: 10px 20px;
-            background-color: #493339;
-            color: #fff;
-            text-decoration: none;
+            background-color: #111111;
+            color: #ffffff;
+            border: none;
             border-radius: 5px;
-            font-family: "Roboto", sans-serif;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 10px;
         }
-
-        .button:hover {
-            background-color: #141414;
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #222222;
+            color: #ffffff;
         }
-
-        @media screen and (max-width: 1020px) {
-            .header-sub-title {
-                color: #fff;
-                font-family: "Courier";
-                font-size: 15px;
-            }
-            .flex {
-                display: flex;
-                padding-left: 400px;
-            }
+        footer p {
+            margin: 0;
+            font-size: 14px;
         }
-
-        @media screen and (max-width: 768px) {
-            .header-sub-title {
-                color: #fff;
-                font-family: "Courier";
-                font-size: 15px;
-            }
-            .flex {
-                display: flex;
-                padding-left: 300px;
-            }
+        footer p a {
+            color: #ffffff;
+            text-decoration: none;
         }
-
-        @media screen and (max-width: 400px) {
-            .header-sub-title {
-                color: #fff;
-                font-family: "Courier";
-                font-size: 5px;
-            }
-            .flex {
-                display: flex;
-                padding-left: 150px;
-            }
+        footer p a:hover {
+            text-decoration: underline;
         }
-
     </style>
+</head>
+<body>
+    <div id="overlay">
+    <div id="header">
+        <img src="https://avatars.githubusercontent.com/u/77888909?v=4" alt="photo-2023-08-07-08-52-52" alt="Image" class="center-image">
+    </div>
+    <div id="word-container">
+        <p id="word"></p>
+    </div>
+
     <script>
         const words = ["No One Is Safe From Evil", "Fucked By 3wF", "3wF Was Here"];
         let i = 0;
@@ -154,11 +97,11 @@
                 } else {
                     deletingEffect();
                     return false;
-                };
+                }
                 timer = setTimeout(loopTyping, 250);
             };
             loopTyping();
-        };
+        }
         function deletingEffect() {
             let word = words[i].split("");
             var loopDeleting = function() {
@@ -170,21 +113,25 @@
                         i++;
                     } else {
                         i = 0;
-                    };
+                    }
                     typingEffect();
                     return false;
-                };
+                }
                 timer = setTimeout(loopDeleting, 200);
             };
             loopDeleting();
-        };
+        }
 
         typingEffect();
-
-        document.addEventListener("DOMContentLoaded", function() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-        });
     </script>
+    
+    <div class="button-container">
+        <a class="button" href="https://t.me/Rainoman1" target="_blank">Telegram</a>
+        <a class="button" href="https://github.com/i3wF" target="_blank">GitHub</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Designed with ❤️ by  <a href="http://3wf.xyz" target="_blank">3wF</a>. All rights reserved.</p>
+    </footer>
 </body>
 </html>
