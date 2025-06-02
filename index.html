@@ -3,135 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3wF Website</title>
+    <title>3wF - Digital Presence</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #000000;
-            color: #333333;
+            box-sizing: border-box;
         }
-        #overlay {
+
+        body {
+            font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0f0f0f, #151515);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 1;
         }
-        #header {
-            text-align: center;
-            padding: 20px;
-        }
-        #word-container {
-            text-align: center;
-            padding: 20px;
-            font-family: Futura, sans-serif;
-            color: #ffffff;
-            height: 40px;
-        }
-        #word {
-            font-family: Futura, sans-serif;
-        }
-        .center-image {
-            width: 200px;
-            height: auto;
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .button {
-            padding: 10px 20px;
-            background-color: #111111;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            margin-right: 10px;
-        }
-        footer {
+
+        .particle {
             position: absolute;
-            bottom: 0;
-            width: 100%;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
             text-align: center;
-            padding: 10px 0;
-            background-color: #222222;
-            color: #ffffff;
         }
-        footer p {
-            margin: 0;
-            font-size: 14px;
+
+        .profile-section {
+            margin-bottom: 3rem;
+            animation: slideUp 1s ease-out;
         }
-        footer p a {
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #333;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.1); }
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+
+        .typing-container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .typing-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 3s ease infinite;
+            min-height: 2.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 2rem;
+            background-color: #fff;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .button {
+            padding: 15px 30px;
+            background: transparent;
+            border: 2px solid transparent;
+            border-radius: 50px;
             color: #ffffff;
             text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        footer p a:hover {
-            text-decoration: underline;
+
+        .telegram-btn {
+            color: #ffffff;
+        }
+
+        .github-btn {
+            color: #ffffff;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            color: #cccccc;
+        }
+
+        .telegram-btn:hover {
+            color: #cccccc;
+        }
+
+        .github-btn:hover {
+            color: #cccccc;
+        }
+
+        .button:active {
+            transform: translateY(0px);
+            color: #888888;
+        }
+
+        footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+            font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: #4ecdc4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #45b7d1;
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @media (max-width: 768px) {
+            .typing-text {
+                font-size: 1.5rem;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 200px;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="overlay">
-    <div id="header">
-        <img src="https://avatars.githubusercontent.com/u/77888909?v=4" alt="photo-2023-08-07-08-52-52" alt="Image" class="center-image">
-    </div>
-    <div id="word-container">
-        <p id="word"></p>
-    </div>
-
-    <script>
-        const words = ["No One Is Safe From Evil", "Fucked By 3wF", "3wF Was Here"];
-        let i = 0;
-        let timer;
-
-        function typingEffect() {
-            let word = words[i].split("");
-            var loopTyping = function() {
-                if (word.length > 0) {
-                    document.getElementById('word').innerHTML += word.shift();
-                } else {
-                    deletingEffect();
-                    return false;
-                }
-                timer = setTimeout(loopTyping, 250);
-            };
-            loopTyping();
-        }
-        function deletingEffect() {
-            let word = words[i].split("");
-            var loopDeleting = function() {
-                if (word.length > 0) {
-                    word.pop();
-                    document.getElementById('word').innerHTML = word.join("");
-                } else {
-                    if (words.length > (i + 1)) {
-                        i++;
-                    } else {
-                        i = 0;
-                    }
-                    typingEffect();
-                    return false;
-                }
-                timer = setTimeout(loopDeleting, 200);
-            };
-            loopDeleting();
-        }
-
-        typingEffect();
-    </script>
+    <div class="particles" id="particles"></div>
     
-    <div class="button-container">
-        <a class="button" href="https://t.me/Rainoman1" target="_blank">Telegram</a>
-        <a class="button" href="https://github.com/i3wF" target="_blank">GitHub</a>
+    <div class="container">
+        <div class="profile-section">
+            <img src="https://avatars.githubusercontent.com/u/77888909?v=4" alt="3wF Profile" class="profile-image">
+        </div>
+        
+        <div class="typing-container">
+            <div class="typing-text" id="typingText"></div>
+            <div class="cursor" id="cursor"></div>
+        </div>
+        
+        <div class="button-container">
+            <a class="button telegram-btn" href="https://t.me/Rainoman1" target="_blank">
+                Telegram
+            </a>
+            <a class="button github-btn" href="https://github.com/i3wF" target="_blank">
+                GitHub
+            </a>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Designed with ❤️ by  <a href="http://3wf.xyz" target="_blank">3wF</a>. All rights reserved.</p>
+        <p>&copy; 2025 Engineered by <a href="https://3wf.me" target="_blank">3wF</a> | Digital Architect & Code Manipulator</p>
     </footer>
+
+    <script>
+        const messages = [
+            "No One Is Safe From Evil",
+            "Fucked By 3wF", 
+            "3wF Was Here",
+        ];
+        
+        let messageIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typingText');
+        const cursor = document.getElementById('cursor');
+
+        function typeWriter() {
+            const currentMessage = messages[messageIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentMessage.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentMessage.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 100 : 150;
+
+            if (!isDeleting && charIndex === currentMessage.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                messageIndex = (messageIndex + 1) % messages.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            typeWriter();
+        });
+        setInterval(() => {
+            if (Math.random() < 0.1) {
+                typingElement.classList.add('glitch');
+                setTimeout(() => {
+                    typingElement.classList.remove('glitch');
+                }, 500);
+            }
+        }, 5000);
+    </script>
 </body>
 </html>
